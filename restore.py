@@ -270,7 +270,7 @@ def restore32(device, iosversion):
                 os.remove('errorlogrestore.txt')
 
     else:
-        cmd2 = f'{futurerestore} -t resources/other/apnonce.shsh --use-pwndfu --latest-baseband custom.ipsw'
+        cmd2 = f'{futurerestore} -t resources/other/apnonce.shsh --use-pwndfu --no-baseband custom.ipsw'
         so2 = subprocess.run(cmd2, shell=True, stdout=open('errorlogrestore.txt', 'w'))
         returncode = so2.returncode
         output = 'errorlogrestore.txt'
@@ -381,7 +381,7 @@ def restore64(device):
 
     else:
 
-        cmd2 = f'{futurerestore} -t resources/other/apnonce.shsh -s resources/other/sep.im4p -m resources/manifests/BuildManifest_{device}.plist -b resources/other/baseband.bbfw -p resources/manifests/BuildManifest_{device}.plist custom.ipsw'
+        cmd2 = f'{futurerestore} -t resources/other/apnonce.shsh -s resources/other/sep.im4p -m resources/manifests/BuildManifest_{device}.plist --no-baseband -p resources/manifests/BuildManifest_{device}.plist custom.ipsw'
         so2 = subprocess.run(cmd2, shell=True, stdout=open('errorlogrestore.txt', 'w'))
         returncode = so2.returncode
         output = 'errorlogrestore.txt'
